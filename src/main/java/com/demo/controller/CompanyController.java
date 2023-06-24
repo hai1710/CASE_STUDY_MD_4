@@ -37,6 +37,14 @@ public class CompanyController {
         }
         return new ResponseEntity<>(company.get(), HttpStatus.OK);
     }
+    @GetMapping("/search")
+    public ResponseEntity<Iterable<Company>> searchCompanyByName(@RequestParam("name") String name){
+        Iterable<Company> companies = companyService.findByName(name);
+        if( companies != null){
+            return new ResponseEntity<>(companies,HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
 
     @PostMapping
     public ResponseEntity<Company> addNewCompany(@RequestBody Company company) {

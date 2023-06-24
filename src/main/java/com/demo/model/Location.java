@@ -13,8 +13,8 @@ public class Location {
     public Location() {
     }
 
-    public Location(String name_address) {
-        this.name = name_address;
+    public Location(String name) {
+        this.name = name;
     }
 
     public Long getId() {
@@ -25,7 +25,7 @@ public class Location {
         this.id = id;
     }
 
-    public String getName_address() {
+    public String getName() {
         return name;
     }
 

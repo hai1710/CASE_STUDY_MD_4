@@ -27,6 +27,11 @@ public class CompanyService implements ICompanyService{
     }
 
     @Override
+    public Iterable<Company> findByName(String name) {
+        return companyRepository.findCompaniesByName(name);
+    }
+
+    @Override
     public void remove(Long id) {
         companyRepository.deleteById(id);
     }

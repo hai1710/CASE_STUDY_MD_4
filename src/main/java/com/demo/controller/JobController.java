@@ -36,7 +36,14 @@ public class JobController {
         }
         return new ResponseEntity<>(job.get(), HttpStatus.OK);
     }
-
+    @GetMapping("/search")
+    public ResponseEntity<Iterable<Job>> searchJobByTitle(@RequestParam("title") String title){
+        Iterable<Job> jobs = jobService.findByName(title);
+        if(jobs != null){
+            return new ResponseEntity<>(jobs,HttpStatus.OK);
+        }
+        return  new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
     @PostMapping
     public ResponseEntity<Job> addNewCompany(@RequestBody Job job) {
         return new ResponseEntity<>(jobService.save(job), HttpStatus.CREATED);

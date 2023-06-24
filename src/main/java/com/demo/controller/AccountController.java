@@ -34,7 +34,14 @@ public class AccountController {
         }
         return new ResponseEntity<>(account.get(), HttpStatus.OK);
     }
-
+    @GetMapping("/search")
+    public ResponseEntity<Iterable<Account>> searchAccountByName(@RequestParam("name") String name){
+        Iterable<Account> accounts = accountService.findByName(name);
+        if(accounts != null){
+            return new ResponseEntity<>(accounts,HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
     @PostMapping
     public ResponseEntity<Account> addNewAccount(@RequestBody Account account) {
         return new ResponseEntity<>(accountService.save(account), HttpStatus.CREATED);

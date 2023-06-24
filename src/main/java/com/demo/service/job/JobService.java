@@ -28,6 +28,11 @@ public class JobService implements IJobService{
     }
 
     @Override
+    public Iterable<Job> findByName(String name) {
+        return jobRepository.findJobByTitle(name);
+    }
+
+    @Override
     public void remove(Long id) {
         jobRepository.deleteById(id);
     }

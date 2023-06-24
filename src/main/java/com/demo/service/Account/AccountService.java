@@ -28,6 +28,11 @@ public class AccountService implements IAccountService{
     }
 
     @Override
+    public Iterable<Account> findByName(String name) {
+        return accountRepository.findAccountByName(name);
+    }
+
+    @Override
     public void remove(Long id) {
         accountRepository.deleteById(id);
     }
