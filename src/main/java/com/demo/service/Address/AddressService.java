@@ -1,6 +1,6 @@
 package com.demo.service.Address;
 
-import com.demo.model.Address;
+import com.demo.model.Location;
 import com.demo.repository.IAddressRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,18 +13,18 @@ public class AddressService implements IAddressService{
     private IAddressRepository addressRepository;
 
     @Override
-    public Iterable<Address> findAll() {
+    public Iterable<Location> findAll() {
         return addressRepository.findAll();
     }
 
     @Override
-    public Optional<Address> findById(Long id) {
+    public Optional<Location> findById(Long id) {
         return addressRepository.findById(id);
     }
 
     @Override
-    public Address save(Address address) {
-        return addressRepository.save(address);
+    public Location save(Location location) {
+        return addressRepository.save(location);
     }
 
     @Override

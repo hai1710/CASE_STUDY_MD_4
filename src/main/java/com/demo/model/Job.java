@@ -11,17 +11,21 @@ public class Job {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
-    private Double salary;
+    private String salary;
+    private String image;
+    private String job_type;
     @ManyToOne
-    @JoinColumn(name = "address_id",referencedColumnName = "id")
-    private Address address_job;
-    private String vacancies;
-    private Long Experience;
-    private String job_form;
-    private Date date;
+    @JoinColumn(name = "location_id",referencedColumnName = "id")
+    private Location job_Location;
+    private String experience;
+    private String employment_status;
+    private Date published_on;
+    private Date application_deadline;
     private String description;
-    private String quantity_job;
-    private String sex;
+    private String vacancy;
+    private String gender;
+    private String job_region;
+    private Boolean status;
     @ManyToOne
     @JoinColumn(name = "company_id", referencedColumnName = "id")
     private Company company;
@@ -29,17 +33,21 @@ public class Job {
     public Job() {
     }
 
-    public Job(String title, Double salary, Address address_job, String vacancies, Long experience, String job_form, Date date, String description, String quantity_job, String sex, Company company) {
+    public Job(String title, String salary, String image, String job_type, Location job_Location, String experience, String employment_status, Date published_on, Date application_deadline, String description, String vacancy, String gender, String job_region, Boolean status, Company company) {
         this.title = title;
         this.salary = salary;
-        this.address_job = address_job;
-        this.vacancies = vacancies;
-        Experience = experience;
-        this.job_form = job_form;
-        this.date = date;
+        this.image = image;
+        this.job_type = job_type;
+        this.job_Location = job_Location;
+        this.experience = experience;
+        this.employment_status = employment_status;
+        this.published_on = published_on;
+        this.application_deadline = application_deadline;
         this.description = description;
-        this.quantity_job = quantity_job;
-        this.sex = sex;
+        this.vacancy = vacancy;
+        this.gender = gender;
+        this.job_region = job_region;
+        this.status = status;
         this.company = company;
     }
 
@@ -59,52 +67,68 @@ public class Job {
         this.title = title;
     }
 
-    public Double getSalary() {
+    public String getSalary() {
         return salary;
     }
 
-    public void setSalary(Double salary) {
+    public void setSalary(String salary) {
         this.salary = salary;
     }
 
-    public Address getAddress_job() {
-        return address_job;
+    public String getImage() {
+        return image;
     }
 
-    public void setAddress_job(Address address_job) {
-        this.address_job = address_job;
+    public void setImage(String image) {
+        this.image = image;
     }
 
-    public String getVacancies() {
-        return vacancies;
+    public String getJob_type() {
+        return job_type;
     }
 
-    public void setVacancies(String vacancies) {
-        this.vacancies = vacancies;
+    public void setJob_type(String job_type) {
+        this.job_type = job_type;
     }
 
-    public Long getExperience() {
-        return Experience;
+    public Location getJob_Location() {
+        return job_Location;
     }
 
-    public void setExperience(Long experience) {
-        Experience = experience;
+    public void setJob_Location(Location job_Location) {
+        this.job_Location = job_Location;
     }
 
-    public String getJob_form() {
-        return job_form;
+    public String getExperience() {
+        return experience;
     }
 
-    public void setJob_form(String job_form) {
-        this.job_form = job_form;
+    public void setExperience(String experience) {
+        this.experience = experience;
     }
 
-    public Date getDate() {
-        return date;
+    public String getEmployment_status() {
+        return employment_status;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setEmployment_status(String employment_status) {
+        this.employment_status = employment_status;
+    }
+
+    public Date getPublished_on() {
+        return published_on;
+    }
+
+    public void setPublished_on(Date published_on) {
+        this.published_on = published_on;
+    }
+
+    public Date getApplication_deadline() {
+        return application_deadline;
+    }
+
+    public void setApplication_deadline(Date application_deadline) {
+        this.application_deadline = application_deadline;
     }
 
     public String getDescription() {
@@ -115,20 +139,36 @@ public class Job {
         this.description = description;
     }
 
-    public String getQuantity_job() {
-        return quantity_job;
+    public String getVacancy() {
+        return vacancy;
     }
 
-    public void setQuantity_job(String quantity_job) {
-        this.quantity_job = quantity_job;
+    public void setVacancy(String vacancy) {
+        this.vacancy = vacancy;
     }
 
-    public String getSex() {
-        return sex;
+    public String getGender() {
+        return gender;
     }
 
-    public void setSex(String sex) {
-        this.sex = sex;
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getJob_region() {
+        return job_region;
+    }
+
+    public void setJob_region(String job_region) {
+        this.job_region = job_region;
+    }
+
+    public Boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
     }
 
     public Company getCompany() {

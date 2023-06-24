@@ -2,21 +2,19 @@ package com.demo.model;
 
 import jakarta.persistence.*;
 
-import java.util.List;
-
 @Entity
-@Table(name = "roles")
-public class Role {
+@Table(name = "locations")
+public class Location {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
 
-    public Role() {
+    public Location() {
     }
 
-    public Role(String name) {
-        this.name = name;
+    public Location(String name_address) {
+        this.name = name_address;
     }
 
     public Long getId() {
@@ -27,11 +25,11 @@ public class Role {
         this.id = id;
     }
 
-    public String getName_role() {
+    public String getName_address() {
         return name;
     }
 
-    public void setName_role(String name_role) {
-        this.name= name_role;
+    public void setName(String name) {
+        this.name = name;
     }
 }

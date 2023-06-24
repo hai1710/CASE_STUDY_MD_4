@@ -2,8 +2,6 @@ package com.demo.model;
 
 import jakarta.persistence.*;
 
-import java.util.List;
-
 
 @Entity
 @Table(name = "accounts")
@@ -15,28 +13,28 @@ public class Account {
     private String password;
     private String name;
     private String age;
-    private String sex;
+    private String gender;
     private String image;
     private Boolean status;
     @ManyToOne
-    @JoinColumn(name = "address_id",referencedColumnName = "id")
-    private Address address;
+    @JoinColumn(name = "location_id",referencedColumnName = "id")
+    private Location location;
     @ManyToOne
-    @JoinColumn(name = "role_id9")
+    @JoinColumn(name = "role_id", referencedColumnName = "id")
     private Role role;
 
     public Account() {
     }
 
-    public Account(String email, String password, String name, String age, String sex, String image, Boolean status, Address address, Role role) {
+    public Account(String email, String password, String name, String age, String gender, String image, Boolean status, Location location, Role role) {
         this.email = email;
         this.password = password;
         this.name = name;
         this.age = age;
-        this.sex = sex;
+        this.gender = gender;
         this.image = image;
         this.status = status;
-        this.address = address;
+        this.location = location;
         this.role = role;
     }
 
@@ -80,12 +78,12 @@ public class Account {
         this.age = age;
     }
 
-    public String getSex() {
-        return sex;
+    public String getGender() {
+        return gender;
     }
 
-    public void setSex(String sex) {
-        this.sex = sex;
+    public void setGender(String sex) {
+        this.gender = sex;
     }
 
     public String getImage() {
@@ -104,12 +102,12 @@ public class Account {
         this.status = status;
     }
 
-    public Address getAddress() {
-        return address;
+    public Location getAddress() {
+        return location;
     }
 
-    public void setAddress(Address address) {
-        this.address = address;
+    public void setAddress(Location location) {
+        this.location = location;
     }
 
     public Role getRole() {

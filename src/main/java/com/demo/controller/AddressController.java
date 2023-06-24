@@ -1,6 +1,6 @@
 package com.demo.controller;
 
-import com.demo.model.Address;
+import com.demo.model.Location;
 
 import com.demo.service.Address.IAddressService;
 
@@ -20,17 +20,17 @@ public class AddressController {
     private IAddressService addressService;
 
     @GetMapping
-    public ResponseEntity<List<Address>> showAddressList() {
-        List<Address> addressList = (List<Address>) addressService.findAll();
-        if (addressList.isEmpty()) {
+    public ResponseEntity<List<Location>> showAddressList() {
+        List<Location> locationList = (List<Location>) addressService.findAll();
+        if (locationList.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
-        return new ResponseEntity<>(addressList, HttpStatus.OK);
+        return new ResponseEntity<>(locationList, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Address> findAddressById(@PathVariable Long id) {
-        Optional<Address> address = addressService.findById(id);
+    public ResponseEntity<Location> findAddressById(@PathVariable Long id) {
+        Optional<Location> address = addressService.findById(id);
         if (!address.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
@@ -38,15 +38,15 @@ public class AddressController {
     }
 
     @PostMapping
-    public ResponseEntity<Address> addNewCompany(@RequestBody Address address) {
-        return new ResponseEntity<>(addressService.save(address), HttpStatus.CREATED);
+    public ResponseEntity<Location> addNewCompany(@RequestBody Location location) {
+        return new ResponseEntity<>(addressService.save(location), HttpStatus.CREATED);
     }
     @PutMapping("/{id}")
-    public ResponseEntity<Address> updateAddress(@PathVariable Long id, @RequestBody Address address){
-        Optional<Address> addressOptional = addressService.findById(id);
+    public ResponseEntity<Location> updateAddress(@PathVariable Long id, @RequestBody Location location){
+        Optional<Location> addressOptional = addressService.findById(id);
         if (!addressOptional.isPresent()){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);}
-        address.setId(addressOptional.get().getId());
-        return new ResponseEntity<>(addressService.save(address),HttpStatus.OK);
+        location.setId(addressOptional.get().getId());
+        return new ResponseEntity<>(addressService.save(location),HttpStatus.OK);
     }
 }
