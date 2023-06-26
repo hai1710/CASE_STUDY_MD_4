@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-@CrossOrigin
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/account")
 public class AccountController {
@@ -34,6 +34,16 @@ public class AccountController {
         }
         return new ResponseEntity<>(account.get(), HttpStatus.OK);
     }
+
+    @GetMapping("/count")
+    public ResponseEntity<Long> countAccounts(){
+        Long count = accountService.count();
+        if (count != null){
+            return new ResponseEntity<>(count,HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
     @GetMapping("/search")
     public ResponseEntity<Iterable<Account>> searchAccountByName(@RequestParam("name") String name){
         Iterable<Account> accounts = accountService.findByName(name);

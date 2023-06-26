@@ -33,6 +33,11 @@ public class AccountService implements IAccountService{
     }
 
     @Override
+    public Long count() {
+        return accountRepository.count();
+    }
+
+    @Override
     public void remove(Long id) {
         accountRepository.deleteById(id);
     }

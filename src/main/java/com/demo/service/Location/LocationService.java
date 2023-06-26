@@ -34,6 +34,11 @@ public class LocationService implements ILocationService {
     }
 
     @Override
+    public Long count() {
+        return locationRepository.count();
+    }
+
+    @Override
     public void remove(Long id) {
     locationRepository.deleteById(id);
     }

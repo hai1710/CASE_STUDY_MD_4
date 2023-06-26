@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-@CrossOrigin
+@CrossOrigin("*")
 @RestController
 @RequestMapping("job")
 public class JobController {
@@ -26,6 +26,15 @@ public class JobController {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<>(jobList, HttpStatus.OK);
+    }
+
+    @GetMapping("count")
+    public ResponseEntity<Long> countJobs(){
+        Long count = jobService.count();
+        if (count != null){
+            return new ResponseEntity<>(count,HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
     @GetMapping("/{id}")

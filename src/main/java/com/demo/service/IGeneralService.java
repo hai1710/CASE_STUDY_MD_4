@@ -7,5 +7,6 @@ public interface IGeneralService<T> {
     Optional<T> findById(Long id);
     T save(T t);
     Iterable<T> findByName(String name);
+    Long count();
     void remove(Long id);
 }

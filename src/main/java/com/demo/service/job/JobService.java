@@ -33,6 +33,11 @@ public class JobService implements IJobService{
     }
 
     @Override
+    public Long count() {
+        return jobRepository.count();
+    }
+
+    @Override
     public void remove(Long id) {
         jobRepository.deleteById(id);
     }

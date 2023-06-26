@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-@CrossOrigin
+@CrossOrigin("*")
 @RestController
 @RequestMapping("company")
 public class CompanyController {
@@ -37,11 +37,21 @@ public class CompanyController {
         }
         return new ResponseEntity<>(company.get(), HttpStatus.OK);
     }
+
     @GetMapping("/search")
     public ResponseEntity<Iterable<Company>> searchCompanyByName(@RequestParam("name") String name){
         Iterable<Company> companies = companyService.findByName(name);
         if( companies != null){
             return new ResponseEntity<>(companies,HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @GetMapping("/count")
+    public ResponseEntity<Long> countCompanies(){
+        Long count = companyService.count();
+        if (count != null){
+            return new ResponseEntity<>(count,HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }

@@ -36,6 +36,16 @@ public class LocationController {
         }
         return new ResponseEntity<>(address.get(), HttpStatus.OK);
     }
+
+    @GetMapping("/count")
+    public ResponseEntity<Long> countLocation(){
+        Long count = locationService.count();
+        if (count != null){
+            return new ResponseEntity<>(count,HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
     @GetMapping("/search")
     public ResponseEntity<Iterable<Location>> searchLocationByName(@RequestParam("name") String name){
         Iterable<Location> locations = locationService.findByName(name);

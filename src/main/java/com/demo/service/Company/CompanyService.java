@@ -32,6 +32,11 @@ public class CompanyService implements ICompanyService{
     }
 
     @Override
+    public Long count() {
+        return companyRepository.count();
+    }
+
+    @Override
     public void remove(Long id) {
         companyRepository.deleteById(id);
     }
